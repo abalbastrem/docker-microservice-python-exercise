@@ -6,9 +6,7 @@ RUN pip3 install pymongo
 RUN pip3 install fastapi
 RUN pip3 install "uvicorn[standard]"
 
+# start server with API
 WORKDIR /app
-COPY infrastructure/server.py ./
-RUN python3 server.py
-
-
-EXPOSE 27017
+COPY infrastructure/api.py ./
+CMD ["uvicorn", "api:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000"]

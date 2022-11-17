@@ -8,7 +8,7 @@ services:
     environment:
       MONGODB_CONNSTRING: mongodb://root:tipsterchat@mongodb
     ports:
-      - 3160:3160
+      - "8000:8000"
 
   # mongo-container:
   #   image: mongo
@@ -20,21 +20,6 @@ services:
   #   volumes:
   #     - ./db:/data/db
   #     - ./mongo-app:/var/www/html
-
-  # mongo-py:
-  #   build:
-  #     context: ./app
-  #     dockerfile: docker/Dockerfile
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: root
-  #     MONGO_INITDB_ROOT_PASSWORD: tipsterchat
-  #     MONGODB_CONNSTRING: mongodb://root:tipsterchat@mongodb
-  #   ports:
-  #     - 27017:27017
-  #   volumes:
-  #     - ./db:/data/db
-  #     - ./mongo-app:/var/www/html
-  #     - ./app:/app
 
   # mongo-express:
   #   image: mongo-express

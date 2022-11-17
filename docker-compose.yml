@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  tips-app:
+    build:
+      context: ./app
+      dockerfile: docker/Dockerfile
+    environment:
+      MONGODB_CONNSTRING: mongodb://root:tipsterchat@mongodb
+    ports:
+      - 3160:3160
+
+  # mongo-container:
+  #   image: mongo
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: tipsterchat
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - ./db:/data/db
+  #     - ./mongo-app:/var/www/html
+
+  # mongo-py:
+  #   build:
+  #     context: ./app
+  #     dockerfile: docker/Dockerfile
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: tipsterchat
+  #     MONGODB_CONNSTRING: mongodb://root:tipsterchat@mongodb
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - ./db:/data/db
+  #     - ./mongo-app:/var/www/html
+  #     - ./app:/app
+
+  # mongo-express:
+  #   image: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: mepass

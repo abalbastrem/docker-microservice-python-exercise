@@ -1,0 +1,13 @@
+setup.py
+Application/__init__.py
+Domain/Tip.py
+Domain/__init__.py
+Infrastructure/__init__.py
+Infrastructure/api.py
+Infrastructure/repo.py
+Infrastructure/repo_mock.py
+Infrastructure/test_api.py
+tips_app.egg-info/PKG-INFO
+tips_app.egg-info/SOURCES.txt
+tips_app.egg-info/dependency_links.txt
+tips_app.egg-info/top_level.txt

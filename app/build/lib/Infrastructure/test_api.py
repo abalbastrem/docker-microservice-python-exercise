@@ -21,9 +21,14 @@ def test_new_tip():
     assert response.status_code == 201
 
 def test_new_tip_400():
-    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip3_fail)
+    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip4_fail)
     assert response.status_code == 400
     assert response.error_message == "tipster_id cannot be null"
+
+def test_new_tip_same_tipster_same_match():
+    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip1_ok)
+    assert response.status_code == 400
+    assert response.error_message == "cannot tip more than once on the same match"
 
 def test_list_tips_by_one_param():
     listParams = {

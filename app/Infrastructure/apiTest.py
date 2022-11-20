@@ -1,7 +1,8 @@
 from fastapi.testclient import TestClient
 
 from Infrastructure.api import app
-from Infrastructure.repo_mock import *
+from Infrastructure.TipRepoMock import *
+from Infrastructure.EnvEnum import Env
 
 client = TestClient(app)
 
@@ -9,7 +10,7 @@ ENDPOINT_ROOT = "/"
 ENDPOINT_NEW = "/new/"
 ENDPOINT_LIST = "/list/"
 
-TEST_HEADER = {"test": str(True)}
+TEST_HEADER = {"env":str(Env.TEST)}
 
 def test_read_root():
     response = client.get(ENDPOINT_ROOT, headers=TEST_HEADER)
@@ -17,16 +18,16 @@ def test_read_root():
     assert response.json() == {"Hello": "Test"}
 
 def test_new_tip():
-    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip1_ok)
+    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip1_ok.json())
     assert response.status_code == 201
 
 def test_new_tip_400():
-    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip4_fail)
+    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip4_fail.json())
     assert response.status_code == 400
     assert response.error_message == "tipster_id cannot be null"
 
 def test_new_tip_same_tipster_same_match():
-    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip1_ok)
+    response = client.post(ENDPOINT_NEW, headers=TEST_HEADER, json=mock_tip1_ok.json())
     assert response.status_code == 400
     assert response.error_message == "cannot tip more than once on the same match"
 

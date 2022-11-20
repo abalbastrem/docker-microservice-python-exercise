@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 
 from Infrastructure.api import app
-from Infrastructure.TipRepoMock import *
+from Infrastructure.Repos.TipRepoMock import *
 from Infrastructure.EnvEnum import Env
 
 client = TestClient(app)

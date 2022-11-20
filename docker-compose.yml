@@ -33,7 +33,7 @@ services:
 
   tips-app:
     build:
-      context: ./app
+      context: ./src
       dockerfile: docker/Dockerfile
     restart: always
     environment:

@@ -7,7 +7,7 @@ mock_tip1_ok = Tip(
     bookie_id= "333",
     rate= 1.80,
     stake= 4.50,
-    pick= "fc_barcelona",
+    pick_id= "fc_barcelona",
     media= ".mediafile.jpg"
 )
 
@@ -18,7 +18,7 @@ mock_tip2_ok = Tip(
     bookie_id= "339",
     rate= 1.80,
     stake= 4.50,
-    pick= "nadal_rafael",
+    pick_id= "nadal_rafael",
     media= None
 )
 
@@ -29,7 +29,7 @@ mock_tip3_fail = Tip(
     bookie_id= "333",
     rate= 1.80,
     stake= 4.50,
-    pick= "fc_barcelona",
+    pick_id= "fc_barcelona",
     media= ".mediafile.jpg"
 )
 
@@ -40,6 +40,6 @@ mock_tip4_fail = Tip(
     bookie_id= "444",
     rate= 1.80,
     stake= 4.50,
-    pick= "fc_barcelona",
+    pick_id= "fc_barcelona",
     media= None
 )

@@ -7,5 +7,5 @@ class Tip(BaseModel):
     bookie_id: str
     rate: float
     stake: float
-    pick: str
+    pick_id: str
     media: str | None

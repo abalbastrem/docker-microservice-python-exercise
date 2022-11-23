@@ -31,10 +31,10 @@ class TipRepoMongo:
         except errors.CollectionInvalid:
             return errors.CollectionInvalid
 
-    def insertTip(self, tip: Tip):
+    def insertOne(self, tip: Tip):
         return self.collection.insert_one(tip.dict())
 
-    def fetchTips(self, getTipsBy: GetTipsByRequest):
+    def fetchMany(self, getTipsBy: GetTipsByRequest):
         items = []
         transformer = GetTipsByTransformerMongo(getTipsBy)
         for tip in self.collection.find(transformer.exec(), {'_id': 0}):

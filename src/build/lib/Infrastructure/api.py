@@ -18,12 +18,12 @@ async def read_root(env: Env = Header()):
 @app.post("/new")
 async def new_tip(tip: Tip, env: Env = Header()):
     repo = TipRepoMongo(env)
-    inserted = repo.insertTip(tip)
+    inserted = repo.insertOne(tip)
     return {"insertedId": str(inserted.inserted_id)}
 
 
 @app.get("/list")
 async def read_item(getTipsBy: GetTipsByRequest, env: Env = Header()):
     repo = TipRepoMongo(env)
-    repo.fetchTips(getTipsBy)
+    repo.fetchMany(getTipsBy)
     return # actual list

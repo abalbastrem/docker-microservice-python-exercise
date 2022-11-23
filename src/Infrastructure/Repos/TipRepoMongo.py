@@ -1,8 +1,14 @@
 from pymongo import MongoClient, errors
+from pydantic import BaseModel
 
 from Infrastructure.EnvEnum import Env
 from Domain.Tip import Tip
+from Application.Request.GetTipsByRequest import GetTipsByRequest, Range
+from Infrastructure.Repos.GetTipsByTransformerMongo import *
 
+# TODO init both DB and collections?
+# TODO create unique compound index
+# TODO use docker-compose env constants
 MONGODB_CONNSTRING = "mongodb://root:tipsterchat@172.18.0.2:27017"
 DATABASE_PROD = "tips_prod"
 DATABASE_TEST = "tips_test"
@@ -28,7 +34,9 @@ class TipRepoMongo:
     def insertTip(self, tip: Tip):
         return self.collection.insert_one(tip.dict())
 
-    def fetchTips(self, params):
+    def fetchTips(self, getTipsBy: GetTipsByRequest):
         items = []
-        for tip in self.collection.find(params):
+        transformer = GetTipsByTransformerMongo(getTipsBy)
+        for tip in self.collection.find(transformer.exec(), {'_id': 0}):
             items.append(tip)
+        return items

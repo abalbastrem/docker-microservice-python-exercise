@@ -1,4 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import setup
+# TODO use python3 way
 
 setup(
     name="tips_app", 

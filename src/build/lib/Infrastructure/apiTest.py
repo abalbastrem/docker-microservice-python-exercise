@@ -52,5 +52,3 @@ def test_list_tips_by_several_param():
     response = client.get(ENDPOINT_LIST, headers=TEST_HEADER, params=listParams)
     assert response.status_code == 200
     assert response.json() == [mock_tip1_ok]
-
-# TODO drop test database colls after done?

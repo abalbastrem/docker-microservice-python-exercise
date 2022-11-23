@@ -4,8 +4,12 @@ from Infrastructure.EnvEnum import Env
 from Infrastructure.Repos.TipRepoMock import *
 from Infrastructure.Repos.TipRepoMongo import TipRepoMongo
 from Domain.Tip import Tip
+from Application.Request.GetTipsByRequest import GetTipsByRequest
 
 app = FastAPI(title="Tips API")
+# TODO docs
+# TODO ApplicationLayer
+# TODO HTTPExceptions
 
 @app.get("/")
 async def read_root(env: Env = Header()):
@@ -20,9 +24,7 @@ async def new_tip(tip: Tip, env: Env = Header()):
     inserted = repo.insertTip(tip)
     return {"insertedId": str(inserted.inserted_id)}
 
-
-@app.get("/list")
-async def read_item(env: Env = Header()):
-    if env == Env.TEST:
-        return [mock_tip1_ok]
-    return # actual list
+@app.post("/fetch") # TODO get?
+async def read_tip(getTipsBy: GetTipsByRequest, env: Env = Header()):
+    repo = TipRepoMongo(env)
+    return repo.fetchTips(getTipsBy)

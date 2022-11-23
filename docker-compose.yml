@@ -10,26 +10,26 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./db:/data/db
+      - ./volumes/db:/data/db
 
-  mongo-express:
-    image: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
-    depends_on:
-      - mongo
-    links:
-      - mongo
-    environment:
-      ME_CONFIG_MONGODB_SERVER: mongo
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: tipsterchat
-      ME_CONFIG_BASICAUTH_USERNAME: root
-      ME_CONFIG_BASICAUTH_PASSWORD: mepass
-      ME_CONFIG_MONGODB_PORT: 27017
-      DATABASE_PROD: tips_prod
-      DATABASE_TEST: tips_test
+  # mongo-express:
+  #   image: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   depends_on:
+  #     - mongo
+  #   links:
+  #     - mongo
+  #   environment:
+  #     ME_CONFIG_MONGODB_SERVER: mongo
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: tipsterchat
+  #     ME_CONFIG_BASICAUTH_USERNAME: root
+  #     ME_CONFIG_BASICAUTH_PASSWORD: mepass
+  #     ME_CONFIG_MONGODB_PORT: 27017
+  #     DATABASE_PROD: tips_prod
+  #     DATABASE_TEST: tips_test
 
   tips-app:
     build:
@@ -45,3 +45,5 @@ services:
       - mongo
     links:
       - mongo
+    volumes:
+      - ./volumes/external_media:/external_media

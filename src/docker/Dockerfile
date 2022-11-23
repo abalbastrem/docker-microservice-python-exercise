@@ -7,6 +7,6 @@ RUN pip3 install fastapi
 RUN pip3 install "uvicorn[standard]"
 
 # start server with API
-WORKDIR /app/
+WORKDIR /src/
 COPY . .
 CMD ["uvicorn", "Infrastructure.api:app", "--proxy-headers", "--reload", "--host", "0.0.0.0", "--port", "8000"]

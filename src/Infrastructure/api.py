@@ -7,8 +7,9 @@ from Application.Handler.CreateTipHandler import CreateTipHandler
 from Application.Handler.GetTipsByHandler import GetTipsByHandler
 
 app = FastAPI(title="Tips API")
+# TODO test, test, test, test
 # TODO docs
-# TODO go full hexagonal, with instantiations
+# TODO go full hexagonal, with interfaces and instantiations
 # TODO HTTPExceptions
 
 @app.get("/")
@@ -22,9 +23,9 @@ async def read_root(env: Env = Header()):
 async def new_tip(createTipRequest: CreateTipRequest, env: Env = Header()):
     handler = CreateTipHandler(request=createTipRequest, env=env)
     inserted = handler.exec()
-    return {"insertedId": str(inserted.inserted_id)}
+    return {"inserted": str(inserted.inserted_id)}
 
-@app.post("/fetch") # TODO get?
+@app.post("/fetch") # TODO get? # TODO broken when different builds
 async def read_tip(getTipsByRequest: GetTipsByRequest, env: Env = Header()):
     handler = GetTipsByHandler(request=getTipsByRequest, env=env)
     return handler.exec()

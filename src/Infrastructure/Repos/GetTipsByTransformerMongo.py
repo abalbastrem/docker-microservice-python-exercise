@@ -12,5 +12,11 @@ class GetTipsByTransformerMongo():
         if self.__model.stake_range is not None:
             del query["stake_range"]
             query["stake"] = {"$gte": self.__model.stake_range.min, "$lte": self.__model.stake_range.max}
+        if self.__model.has_media is not None:
+            del query["has_media"]
+            if self.__model.has_media:
+                query["media"] = {"$exists": True, "$type": 'array', "$ne": []}
+            else:
+                query["media"] = {"$exists": True, "$type": 'array', "$eq": []}
 
         return query

@@ -8,7 +8,7 @@ mock_tip1_ok = Tip(
     rate= 1.80,
     stake= 4.50,
     pick_id= "fc_barcelona",
-    media= ".mediafile.jpg"
+    media= [".mediafile.jpg"]
 )
 
 mock_tip2_ok = Tip(
@@ -19,7 +19,7 @@ mock_tip2_ok = Tip(
     rate= 1.80,
     stake= 4.50,
     pick_id= "nadal_rafael",
-    media= None
+    media= []
 )
 
 mock_tip3_fail = Tip(
@@ -30,7 +30,8 @@ mock_tip3_fail = Tip(
     rate= 1.80,
     stake= 4.50,
     pick_id= "fc_barcelona",
-    media= ".mediafile.jpg"
+    media= [".mediafile.jpg",
+            "mediafile2.jpg"]
 )
 
 mock_tip4_fail = Tip(
@@ -41,5 +42,5 @@ mock_tip4_fail = Tip(
     rate= 1.80,
     stake= 4.50,
     pick_id= "fc_barcelona",
-    media= None
+    media= []
 )

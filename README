@@ -1,4 +1,4 @@
 Python app in Docker with two endpoints. One for crating an entity, and another for listing them by different criteria.
 
 The architecture is based on hexagonal-onion-clean principles of decoupling and separating Domain, Application and Infrastructure.
-The chosen persistence implementation is with mongodb, since entities are not relational to each other.
+The chosen persistence implementation is with mongodb, since entities are not relational to each other and I wanted to practice with this DB.

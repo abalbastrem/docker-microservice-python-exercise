@@ -11,4 +11,4 @@ class GetTipsByRequest(BaseModel):
     rate_range: Range | None = None
     stake_range: Range | None = None
     pick_id: str | None = None
-    media: str | None = None
+    has_media: bool | None = None

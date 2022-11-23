@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from Domain.Media import Media
 
 class CreateTipRequest(BaseModel):
     tipster_id: str
@@ -6,6 +7,6 @@ class CreateTipRequest(BaseModel):
     analysis: str
     bookie_id: str
     rate: float
-    stake: float
+    stake: float = Field(ge=1.0, le=10.0)
     pick_id: str
-    media: str | None
+    media: Media

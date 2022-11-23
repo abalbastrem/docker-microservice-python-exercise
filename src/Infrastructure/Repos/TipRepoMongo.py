@@ -34,9 +34,9 @@ class TipRepoMongo:
     def insertOne(self, tip: Tip):
         return self.collection.insert_one(tip.dict())
 
-    def fetchMany(self, getTipsBy: GetTipsByRequest):
+    def fetchMany(self, getTipsBy):
+        tipsCursor = self.collection.find(getTipsBy)
         items = []
-        transformer = GetTipsByTransformerMongo(getTipsBy)
-        for tip in self.collection.find(transformer.exec(), {'_id': 0}):
+        for tip in tipsCursor:
             items.append(tip)
         return items

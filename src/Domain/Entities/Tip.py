@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from Domain.Media import Media
+from Domain.Entities.Media import Media
 
 class Tip(BaseModel):
     tipster_id: str

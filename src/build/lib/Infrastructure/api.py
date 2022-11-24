@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Header, HTTPException
 
 from Infrastructure.EnvEnum import Env
-from Infrastructure.Repos.TipRepoMock import *
+from Infrastructure.Fixtures.TipFixture import *
 from Infrastructure.Repos.TipRepoMongo import TipRepoMongo
 from Domain.Tip import Tip
-from Application.Request.GetTipsByRequest import GetTipsByRequest
+from Application.Requests.GetTipsByRequest import GetTipsByRequest
 
 app = FastAPI(title="Tips API")
 

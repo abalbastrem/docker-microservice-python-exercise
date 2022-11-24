@@ -1,4 +1,4 @@
-from Domain.Media import Media
+from Domain.Entities.Media import Media
 from Infrastructure.EnvEnum import Env
 import os
 from bson.objectid import ObjectId

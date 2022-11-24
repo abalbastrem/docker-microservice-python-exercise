@@ -1,6 +1,6 @@
-from Application.Request.GetTipsByRequest import GetTipsByRequest, Range
+from Application.Requests.GetTipsByRequest import GetTipsByRequest
 
-class GetTipsByTransformerMongo():
+class GetTipsByMongoTransformer():
     def __init__(self, getTipsBy: GetTipsByRequest):
         self.__model = getTipsBy
 

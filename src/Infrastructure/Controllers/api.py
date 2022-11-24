@@ -1,16 +1,16 @@
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, Header, HTTPException, Response
 
 from Infrastructure.EnvEnum import Env
-from Application.Request.CreateTipRequest import CreateTipRequest
-from Application.Request.GetTipsByRequest import GetTipsByRequest
-from Application.Handler.CreateTipHandler import CreateTipHandler
-from Application.Handler.GetTipsByHandler import GetTipsByHandler
+from Application.Requests.CreateTipRequest import CreateTipRequest
+from Application.Requests.GetTipsByRequest import GetTipsByRequest
+from Application.Handlers.CreateTipHandler import CreateTipHandler
+from Application.Handlers.GetTipsByHandler import GetTipsByHandler
 
 app = FastAPI(title="Tips API")
 # TODO test, test, test, test
+# TODO HTTPExceptions, Responses
 # TODO docs
 # TODO go full hexagonal, with interfaces and instantiations
-# TODO HTTPExceptions
 
 @app.get("/")
 async def read_root(env: Env = Header()):

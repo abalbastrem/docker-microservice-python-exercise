@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from Domain.Media import Media
 
 class Tip(BaseModel):
     tipster_id: str
@@ -6,6 +7,6 @@ class Tip(BaseModel):
     analysis: str
     bookie_id: str
     rate: float
-    stake: float
-    pick: str
-    media: str | None
+    stake: float = Field(ge=1.0, le=10.0)
+    pick_id: str
+    media: Media

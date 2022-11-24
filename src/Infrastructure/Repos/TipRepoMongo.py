@@ -1,10 +1,8 @@
 from pymongo import MongoClient, errors
-from pydantic import BaseModel
 
 from Infrastructure.EnvEnum import Env
-from Domain.Tip import Tip
-from Application.Request.GetTipsByRequest import GetTipsByRequest, Range
-from Infrastructure.Repos.GetTipsByTransformerMongo import *
+from Domain.Entities.Tip import Tip
+from Infrastructure.Transformers.GetTipsByMongoTransformer import *
 
 # TODO init both DB and collections?
 # TODO create unique compound index

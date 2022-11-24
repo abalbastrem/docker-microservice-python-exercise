@@ -1,4 +1,4 @@
-from Domain.Tip import Tip
+from Domain.Entities.Tip import Tip
 
 mock_tip1_ok = Tip(
     tipster_id= "111",

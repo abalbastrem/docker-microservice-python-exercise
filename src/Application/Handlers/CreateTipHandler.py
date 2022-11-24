@@ -1,5 +1,5 @@
-from Application.Request.CreateTipRequest import CreateTipRequest
-from Domain.Tip import Tip
+from Application.Requests.CreateTipRequest import CreateTipRequest
+from Domain.Entities.Tip import Tip
 from Infrastructure.Repos.TipRepoMongo import TipRepoMongo
 from Infrastructure.Repos.MediaRepoHDD import MediaRepoHDD
 from Infrastructure.EnvEnum import Env

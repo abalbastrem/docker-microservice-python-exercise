@@ -2,11 +2,11 @@ from pydantic import BaseModel, Field
 from Domain.Entities.Media import Media
 
 class CreateTipRequest(BaseModel):
-    tipster_id: str
-    match_id: str
-    analysis: str
-    bookie_id: str
-    rate: float
+    tipster_id: str = Field(min_length=1)
+    match_id: str = Field(min_length=1)
+    analysis: str = Field(min_length=1)
+    bookie_id: str = Field(min_length=1)
+    rate: float = Field(gt=0.0)
     stake: float = Field(ge=1.0, le=10.0)
-    pick_id: str
+    pick_id: str = Field(min_length=1)
     media: Media

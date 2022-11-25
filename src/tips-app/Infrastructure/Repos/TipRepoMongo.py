@@ -19,15 +19,20 @@ class TipRepoMongo:
             self.__conn__()
 
     def __conn__(self):
-        self.client = MongoClient(MONGODB_CONNSTRING)
+        try:
+            self.client = MongoClient(MONGODB_CONNSTRING)
+        except:
+            raise errors.ConnectionFailure(message="could not connect to database. Chase CONNSTRING and mongo container")
         if self.env == Env.TEST:
             self.database = self.client[DATABASE_TEST]
-        if self.env == Env.PROD:
+        elif self.env == Env.PROD:
             self.database = self.client[DATABASE_PROD]
+        else:
+            raise errors.PyMongoError(message="database not found")
         try:
             self.collection = self.database[COLLECTION]
         except errors.CollectionInvalid:
-            return errors.CollectionInvalid
+            raise errors.CollectionInvalid
 
     def insertOne(self, tip: Tip):
         return self.collection.insert_one(tip.dict())
@@ -38,3 +43,10 @@ class TipRepoMongo:
         for tip in tipsCursor:
             items.append(tip)
         return items
+
+    def deleteAllTest(self):
+        try:
+            testCollection = self.client[DATABASE_TEST][COLLECTION]
+            testCollection.delete_many({})
+        except:
+            raise errors.OperationFailure(error="could not delete TEST tips collection")

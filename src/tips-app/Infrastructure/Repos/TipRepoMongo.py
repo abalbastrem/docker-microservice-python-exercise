@@ -28,7 +28,7 @@ class TipRepoMongo:
         elif self.env == Env.PROD:
             self.database = self.client[DATABASE_PROD]
         else:
-            raise errors.PyMongoError(message="database not found")
+            raise errors.PyMongoError(message="wrong env. Database not found")
         try:
             self.collection = self.database[COLLECTION]
         except errors.CollectionInvalid:

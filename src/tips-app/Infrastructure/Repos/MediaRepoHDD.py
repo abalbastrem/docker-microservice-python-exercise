@@ -5,8 +5,12 @@ from bson.objectid import ObjectId
 
 class MediaRepoHDD():
     def __init__(self, env: str = Env.TEST):
-        self.__intPathDir = "/media/"+str(env) # TODO wtf is wrong with Env?
-        self.__intPathDir = "/media/"+"test/"
+        if env == Env.TEST:
+            self.__intPathDir = "/media/test/"
+        elif env == Env.PROD:
+            self.__intPathDir = "/media/prod/"
+        else:
+            raise EnvironmentError(strerror="wrong env. Media repo path could not be found")
         self.__extPathDir = "/external_media/"
 
     def insertMany(self, media: Media, tipId: ObjectId):

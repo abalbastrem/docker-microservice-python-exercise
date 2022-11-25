@@ -12,7 +12,6 @@ from Infrastructure.Repos.MediaRepoHDD import MediaRepoHDD
 from Infrastructure.Fixtures.TipFixture import *
 
 app = FastAPI(title="Tips API")
-# TODO test, test, test, test
 # TODO docs
 # TODO go full hexagonal, with interfaces and instantiations
 
@@ -27,10 +26,10 @@ async def read_root(env: Env = Header()):
 async def new_tip(createTipRequest: CreateTipRequest, env: Env = Header()):
     handler = CreateTipHandler(request=createTipRequest, env=env)
     try:
-        handler.exec()
+        inserted = handler.exec()
     except:
         raise HTTPException(status_code=500)
-    return Response(status_code=200)
+    return Response(status_code=200, content=str(inserted.inserted_id))
 
 @app.post("/fetch") # TODO get? # TODO broken when different builds # TODO model_response List[Tip]
 async def read_tip(getTipsByRequest: GetTipsByRequest, env: Env = Header()):

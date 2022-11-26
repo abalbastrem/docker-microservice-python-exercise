@@ -2,7 +2,7 @@ Python app in Docker with two endpoints and testing. One for creating an entity,
 
 ### INSTRUCTIONS:
 Clone this repository, install docker and get this running with docker-compose. With your terminal, go to the root where docker-compose.yml is and execute<br>
-__$ docker-compose up__
+>$ docker-compose up
 For any doubts on this, check the official docker documentation here:<br>
 https://docs.docker.com/get-docker/
 
@@ -23,7 +23,7 @@ You can see the docs at http://localhost:8000/docs
 
 ### TESTS:
 You can manually execute the tests with on your bash terminal. No need to enter inside the docker since this will work from your terminal.<br>
-__$ docker exec -ti tips-app pytest__
+>$ docker exec -ti tips-app pytest
 
 ### KNOWN BUGS:
 - Chances are two Tips of the same user for the same match shouldn't coexist, so mongo should be set with that constraint in mind.

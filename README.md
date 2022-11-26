@@ -2,8 +2,8 @@ Python app in Docker with two endpoints and testing. One for creating an entity,
 
 ### INSTRUCTIONS:
 Clone this repository, install docker and get this running with docker-compose. With your terminal, go to the root where docker-compose.yml is and execute<br>
->$ docker-compose up<br>
-For any doubts on this, check the official docker documentation here:<br>
+>$ docker-compose up
+<br>For any doubts on this, check the official docker documentation here:<br>
 https://docs.docker.com/get-docker/
 
 In /volumes/external_media/, you should have the following files:

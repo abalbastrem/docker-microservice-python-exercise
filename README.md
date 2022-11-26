@@ -1,9 +1,9 @@
 Python app in Docker with two endpoints and testing. One for creating an entity, and another for listing them by different criteria.
 
 ### INSTRUCTIONS:
-Clone this repository, install docker and get this running with docker-compose. With your terminal, go to the root where docker-compose.yml is and execute
+Clone this repository, install docker and get this running with docker-compose. With your terminal, go to the root where docker-compose.yml is and execute<br>
 __$ docker-compose up__
-For any doubts on this, check the official docker documentation here:
+For any doubts on this, check the official docker documentation here:<br>
 https://docs.docker.com/get-docker/
 
 In /volumes/external_media/, you should have the following files:
@@ -22,7 +22,7 @@ If not there, just create them with anything or nothing in it. These will be use
 You can see the docs at http://localhost:8000/docs
 
 ### TESTS:
-You can manually execute the tests with on your bash terminal. No need to enter inside the docker since this will work from your terminal.
+You can manually execute the tests with on your bash terminal. No need to enter inside the docker since this will work from your terminal.<br>
 __$ docker exec -ti tips-app pytest__
 
 ### KNOWN BUGS:
@@ -30,9 +30,9 @@ __$ docker exec -ti tips-app pytest__
 - Working with media items gets broken between docker uptime sessions.
 
 ### TECHNICAL OBSERVATIONS:
-The architecture is based on hexagonal-onion-clean principles of decoupling and separating Domain, Application and Infrastructure. It is not entirely this way since it seems a bit overkill for a simple app, so for example, there are no interfaces that automagically instantiate into implementations.
-The framework is fastapi since everyone is using it and it's lightweight.
-The chosen persistence implementation is with mongodb, since entities are not relational to each other and I wanted to practice with this DB.
+- The architecture is based on hexagonal-onion-clean principles of decoupling and separating Domain, Application and Infrastructure. It is not entirely this way since it seems a bit overkill for a simple app, so for example, there are no interfaces that automagically instantiate into implementations.
+- The framework is fastapi since everyone is using it and it's lightweight.
+- The chosen persistence implementation is with mongodb, since entities are not relational to each other and I wanted to practice with this DB.
 
 ### THINGS I'VE LEARNED:
 - Got to practice hexagonal architecture once more, and the first time from scratch. It's now finally coming intuitively to me. Hopefully I haven't made many glaring mistakes.

@@ -25,9 +25,9 @@ TEST_HEADER_POST = {
 WRONG_HEADER = {"env": "wrong_env"}
 
 def test_hello_world_ok():
-    response = client.get(ENDPOINT_ROOT, headers=TEST_HEADER_GET)
+    response = client.get(ENDPOINT_ROOT)
     assert response.status_code == 200
-    assert response.content == b"Hello test"
+    assert response.content == b"Hello world"
 
 def test_delete_items():
     tipRepo = TipRepoMongo(Env.TEST)
@@ -38,7 +38,7 @@ def test_delete_items():
     assert True == True
 
 def test_wrong_header_fail():
-    response = client.get(ENDPOINT_ROOT, headers=WRONG_HEADER)
+    response = client.post(ENDPOINT_NEW, headers=WRONG_HEADER, json=tip1_no_media_ok.dict())
     assert response.status_code == 422
 
 def test_new_tip_ok():

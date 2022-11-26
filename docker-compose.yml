@@ -2,13 +2,16 @@ version: "3.8"
 
 services:
   mongo:
+    container_name: tips-app_db
     image: mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: tipsterchat
-    ports:
-      - 27017:27017
+    # expose:
+    #   - 27017
+    # ports:
+    #   - 27017:27017
     volumes:
       - ./volumes/db:/data/db
 
@@ -32,6 +35,7 @@ services:
   #     DATABASE_TEST: tips_test
 
   tips-app:
+    container_name: tips-app
     build:
       context: ./src
       dockerfile: docker/Dockerfile

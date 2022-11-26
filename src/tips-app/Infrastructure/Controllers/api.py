@@ -12,15 +12,10 @@ from Infrastructure.Repos.MediaRepoHDD import MediaRepoHDD
 from Infrastructure.Fixtures.TipFixture import *
 
 app = FastAPI(title="Tips API")
-# TODO docs
-# TODO go full hexagonal, with interfaces and instantiations
 
 @app.get("/")
-async def read_root(env: Env = Header()):
-    if env == Env.TEST:
-        return Response(status_code=200, content="Hello test")
-    if env == Env.PROD:
-        return Response(status_code=200, content="Hello world")
+async def read_root():
+    return Response(status_code=200, content="Hello world")
 
 @app.post("/new")
 async def new_tip(createTipRequest: CreateTipRequest, env: Env = Header()):
@@ -31,7 +26,7 @@ async def new_tip(createTipRequest: CreateTipRequest, env: Env = Header()):
         raise HTTPException(status_code=500)
     return Response(status_code=200, content=str(inserted.inserted_id))
 
-@app.post("/fetch") # TODO get? # TODO broken when different builds # TODO model_response List[Tip]
+@app.post("/fetch")
 async def read_tip(getTipsByRequest: GetTipsByRequest, env: Env = Header()):
     handler = GetTipsByHandler(request=getTipsByRequest, env=env)
     try:
@@ -39,14 +34,3 @@ async def read_tip(getTipsByRequest: GetTipsByRequest, env: Env = Header()):
     except:
         raise HTTPException(status_code=500)
     return tips
-
-@app.get("/reset")
-async def reset_env_db(token: str = Header()):
-    if token != "root":
-        raise HTTPException(status_code=101, detail="permission denied")
-    tipRepo = TipRepoMongo(Env.TEST)
-    mediaRepo = MediaRepoHDD(Env.TEST)
-    tipRepo.deleteAllTest()
-    mediaRepo.deleteAllTest()
-
-    return Response(status_code=200, content="All test DB items deleted")

@@ -4,9 +4,6 @@ from Infrastructure.EnvEnum import Env
 from Domain.Entities.Tip import Tip
 from Infrastructure.Transformers.GetTipsByMongoTransformer import *
 
-# TODO init both DB and collections?
-# TODO create unique compound index
-# TODO use docker-compose env constants
 MONGODB_CONNSTRING = "mongodb://root:tipsterchat@172.18.0.2:27017"
 DATABASE_PROD = "tips_prod"
 DATABASE_TEST = "tips_test"

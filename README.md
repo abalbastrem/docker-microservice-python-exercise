@@ -1,12 +1,13 @@
 Python app in Docker with two endpoints and testing. One for creating an entity, and another for listing them by different criteria.
 
 ### INSTRUCTIONS:
-Clone this repository, install docker and get this running with docker-compose. With your terminal, go to the root where docker-compose.yml is and execute<br>
->$ docker-compose up
-<br>For any doubts on this, check the official docker documentation here:<br>
+Clone this repository, install docker and get this running with docker-compose. In your terminal, go to the root where docker-compose.yml is and execute<br>
+> $ docker-compose up
+
+<br><br>For any doubts on the installation and execution on Docker, check the official docker documentation here:<br>
 https://docs.docker.com/get-docker/
 
-In /volumes/external_media/, you should have the following files:
+In */volumes/external_media/*, you should have the following files:
 - banana1.txt
 - banana2.txt
 - banana3.txt
